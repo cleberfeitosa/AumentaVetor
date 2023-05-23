@@ -15,7 +15,7 @@ public class AumentaVetor {
         Scanner sc = new Scanner(System.in);
         int totalNotas = 0;
         double nota = 0;
-        double[] notas = new double[2];
+        double[] notas = new double[1];
         int posicao = 0;
         totalNotas = 0;
         mensagemBoasVindas();
@@ -29,14 +29,15 @@ public class AumentaVetor {
                 nota = sc.nextDouble();
             }
             //testando se nota é flag de saída e atribuindo notas no vetor notas       
+            if(posicao >= notas.length ){
+                aumentarTamanhoVetor(notas, posicao+1);
+               
+            }
             if (nota > -1) {
                 notas[posicao] = nota;
                 posicao++;
             }
-            if(posicao > notas.length){
-                Vetor vetor = new Vetor();
-                vetor.garantaEspaco();
-            }
+            
         } while (nota != -1);
         //escrevendo saídas solicitadas: quantidade notas
         System.out.println("\nQuantidade de notas lidas: " + posicao + " notas.");
@@ -89,9 +90,15 @@ public class AumentaVetor {
         System.out.println("---------------------------------------\n");
     }
     
-    //método aumentar vetor
-    public static void aumentarVetor(){
-        
+   public static double[] aumentarTamanhoVetor(double[] vetor, int novoTamanho) {
+    double[] notas = new double[novoTamanho];
+    for (int i = 0; i < vetor.length; i++) {
+        notas[i] =  vetor[i];
     }
+    return notas;
+}
+
+        
+    
 
 }
